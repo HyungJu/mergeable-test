@@ -1,0 +1,27 @@
+version: 2
+mergeable:
+  - when: pull_request.*, pull_request_review.*
+    validate:
+      - do: title
+        must_exclude:
+          regex: ^\[WIP\]
+          message: 'WIP는 머지할 수 없습니다'
+      - do: label
+        must_exclude:
+          regex: 'wip'
+        must_exclude:
+          regex: 'do not merge'
+      - do: description
+        no_empty:
+          enabled: true
+          message: 'PR 내용을 입력해주세요'
+      - do: approvals
+        min: 
+          count: 1
+          message: '승인이 적어도 1개 필요합니다'
+        required:
+          assignees: true
+          message: 'Assignee의 승인이 필요합니다'
+        block:
+          changes_requested: true
+          message: '변경 요청이 있어 머지할 수 없습니다'
