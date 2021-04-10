@@ -9,6 +9,7 @@ mergeable:
       - do: label
         must_exclude:
           regex: 'wip'
+      - do: label
         must_exclude:
           regex: 'do not merge'
       - do: description
