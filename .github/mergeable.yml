@@ -29,7 +29,7 @@ mergeable:
         block:
           changes_requested: true
           message: '변경 요청이 있어 머지할 수 없습니다'
-  - when: pull_request.*, pull_request_review.*, status.*, check_suite.*
+  when: pull_request.*, pull_request_review.*, status.*, check_suite.*
     name: "Automatically merge pull requests once it passes all checks"
     validate: []
     pass:
