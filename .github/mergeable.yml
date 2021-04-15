@@ -23,6 +23,12 @@ mergeable:
         required:
           assignees: true
           message: 'Assignee의 승인이 필요합니다'
+        required:
+          requested_reviewers: true
+          message: '모든 요청된 리뷰어가 리뷰를 완료해야 합니다.'
         block:
           changes_requested: true
           message: '변경 요청이 있어 머지할 수 없습니다'
+    pass:
+      - do: merge
+        merge_method: "squash"
